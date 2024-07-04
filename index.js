@@ -16,7 +16,7 @@ app.use(express.json())
 
 app.use(routes)
 // 404 route
-app.get('/',async()=>{
+app.get('/',async(req,res)=>{
     res.send("hello world")
 })
 app.get('*', function (req, res) {
