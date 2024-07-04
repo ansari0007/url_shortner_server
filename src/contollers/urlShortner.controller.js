@@ -14,7 +14,11 @@ const urlShortner=async(req,res)=>{
         const hash = nanoid(8);
         const shortUrl = new urlShortnerModel({ originalUrl, hash });
         await shortUrl.save();
-        res.json({ shortUrl: `http://localhost:8000/${hash}` });
+        // url-shortner-server-xi.vercel.app
+        const baseURL=process.env.BASE_URL
+        const data={shortUrl: `${baseURL}/${hash}` }
+        return res.status(200).json({ status: 201, message: 'short url generated successfully',data:data });          
+
 }
 
 const url= async (req, res) => {
